@@ -1,5 +1,8 @@
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../.env') });
+// Only load dotenv in local development
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config({ path: path.join(__dirname, '../.env') });
+}
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -17,10 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 const frontendDir = path.resolve(__dirname, '..', 'frontend');
 const uploadsDir = path.resolve(__dirname, 'uploads');
 
-console.log('--- SERVER STARTUP ---');
-console.log('Frontend Directory:', frontendDir);
-console.log('Uploads Directory:', uploadsDir);
-
 // Static Serving
 app.use(express.static(frontendDir));
 app.use('/uploads', express.static(uploadsDir));
@@ -33,12 +32,16 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(frontendDir, 'index.html'));
 });
 
-// DB & Listen
+// MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
-    .then(() => {
-        console.log('MongoDB Connected');
-        app.listen(PORT, () => {
-            console.log(`Server is running at http://localhost:${PORT}`);
-        });
-    })
+    .then(() => console.log('MongoDB Connected'))
     .catch(err => console.error('Database connection error:', err));
+
+// Only listen if not running as a Vercel serverless function
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Server is running at http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
