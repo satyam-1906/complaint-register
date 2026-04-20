@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Register - Complaint Register</title>
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .tabs-header {
+            display: flex;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: var(--glass-bg);
+            color: var(--text-color);
+            border-bottom: 3px solid transparent;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .tab-btn.active {
+            border-bottom-color: var(--primary-green);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="display: flex; align-items: center; justify-content: center; min-height: 80vh;">
+        <div class="card glass animate-up" style="width: 100%; max-width: 450px;">
+            <div class="tabs-header">
+                <button class="tab-btn active" id="login-tab">Login</button>
+                <button class="tab-btn" id="register-tab">Register</button>
+            </div>
+
+            <!-- Login Section -->
+            <div id="login-section" class="form-section active">
+                <h2 style="text-align: center;">Welcome Back</h2>
+                <form id="login-form">
+                    <div style="margin-bottom: 15px;">
+                        <label for="l-username">Username</label>
+                        <input type="text" id="l-username" placeholder="Enter username" required>
+                    </div>
+                    <div style="margin-bottom: 25px;">
+                        <label for="l-password">Password</label>
+                        <input type="password" id="l-password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" style="width: 100%;">Access Dashboard</button>
+                    <div id="login-error"
+                        style="color: #ff4d4d; font-size: 0.9rem; margin-top: 15px; text-align: center;"></div>
+                </form>
+            </div>
+
+            <!-- Register Section -->
+            <div id="register-section" class="form-section">
+                <h2 style="text-align: center;">Create Account</h2>
+                <form id="register-form">
+                    <div style="margin-bottom: 15px;">
+                        <label for="r-username">Choose Username</label>
+                        <input type="text" id="r-username" placeholder="Unique username" required>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="r-email">Email Address</label>
+                        <input type="email" id="r-email" placeholder="email@example.com" required>
+                    </div>
+                    <div style="margin-bottom: 25px;">
+                        <label for="r-password">Secure Password</label>
+                        <input type="password" id="r-password" placeholder="At least 6 characters" required>
+                    </div>
+                    <button type="submit" style="width: 100%;">Join Community</button>
+                    <div id="register-error"
+                        style="color: #ff4d4d; font-size: 0.9rem; margin-top: 15px; text-align: center;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

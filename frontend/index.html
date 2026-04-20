@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Register</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="animate-up">Submit a Complaint</h1>
+        <div class="card glass animate-up" style="animation-delay: 0.1s;">
+            <form action="">
+                <div style="margin-bottom: 20px;">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe">
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="john@example.com">
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label for="mobileNo">Mobile Number</label>
+                    <input type="number" id="mobileNo" name="mobileNo" placeholder="1234567890">
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label for="complaint">Complaint Details</label>
+                    <textarea id="complaint" name="complaint" rows="4" placeholder="Describe your issue..."></textarea>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label for="photos">Upload Photos</label>
+                    <input type="file" id="photos" name="photos" accept="image/*" multiple>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <label for="videos">Upload Videos</label>
+                    <input type="file" id="videos" name="videos" accept="video/*" multiple>
+                </div>
+
+                <button type="submit" style="width: 100%;">Register Complaint</button>
+            </form>
+        </div>
+
+        <div class="animate-up" style="animation-delay: 0.2s; text-align: center; margin-top: 20px;">
+            <button class="btn glass" onclick="window.location.href='complaints.html'"
+                style="background: var(--glass-bg); color: var(--text-color);">
+                View All Complaints Dashboard
+            </button>
+        </div>
+    </div>
+</body>
+<script src="js/navbar.js"></script>
+<script src="js/acceptComplaints.js"></script>
+
+</html>
