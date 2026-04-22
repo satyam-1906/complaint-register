@@ -1,4 +1,3 @@
 .env
 node_modules/
-# package-lock.json and package.json MUST be committed for Vercel/deployment
 uploads/
